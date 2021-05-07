@@ -1,5 +1,7 @@
-const { Model, Datatypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
+
+class Article extends Model {};
 
 Article.init(
     {
@@ -14,15 +16,15 @@ Article.init(
             allowNull: false,
           },
           content: {
-              type: Datatypes.TEXT,
+              type: DataTypes.TEXT,
               allowNull: false,
           },
           user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: user,
-                key: id,
+                model: 'user',
+                key: 'id',
             }
           }
     },
