@@ -11,6 +11,7 @@ router.get('/', async (req, res) => {
                     model: User,
                     attributes: ['username']
                 },
+                { model: Comment }
             ],
         });
 
@@ -21,6 +22,8 @@ router.get('/', async (req, res) => {
             // loggedIn: req.session.loggedIn
         });
 
+        console.log(articles)
+        console.log(articles[0].comments[0])
         // res.status(200).json(dbArticleData);
 
     } catch (err) {
@@ -31,18 +34,22 @@ router.get('/', async (req, res) => {
 
 router.get('/article/:id', async (req, res) => {
     try {
+
+        
         
     } catch (error) {
         
     }
 });
 
-router.get('/login', async (req, res) => {
-    try {
-        
-    } catch (error) {
-        
-    }
+router.get('/login', (req, res) => {
+    if (req.session.loggedIn) {
+        res.redirect('/');
+        console.log(req.session.loggedIn);
+        return;
+      }
+      // Otherwise, render the 'login' template
+      res.render('login');
 });
 
 router.get('/signup', async (req, res) => {

@@ -1,0 +1,28 @@
+body {
+    margin: auto;
+   
+}
+
+main {
+    width: 80%;
+    margin: auto;
+}
+
+.card {
+    width: 70%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 50%;
+    margin: auto;
+}
+
+@media screen and (max-width: 768px){
+
+    form {
+        width: 90%;
+    }
+
+}
