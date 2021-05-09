@@ -5,7 +5,6 @@ const { Article, User, Comment } = require('../models');
 
 router.get('/', async (req, res) => {
     try {
-
         const dbArticleData = await Article.findAll({
             include: [
                 {
@@ -19,7 +18,7 @@ router.get('/', async (req, res) => {
 
         res.render('homepage', { 
             articles,
-            loggedIn: req.session.loggedIn
+            // loggedIn: req.session.loggedIn
         });
 
         // res.status(200).json(dbArticleData);
@@ -31,15 +30,27 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/article/:id', async (req, res) => {
-
+    try {
+        
+    } catch (error) {
+        
+    }
 });
 
 router.get('/login', async (req, res) => {
-
+    try {
+        
+    } catch (error) {
+        
+    }
 });
 
 router.get('/signup', async (req, res) => {
-
+    try {
+        
+    } catch (error) {
+        
+    }
 });
 
 module.exports = router;
