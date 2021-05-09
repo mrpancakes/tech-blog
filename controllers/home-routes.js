@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { Article, User } = require('../models');
+const { Article, User, Comment } = require('../models');
 
-// GET all article for homepage
+// GET all articles for homepage
 
 router.get('/', async (req, res) => {
     try {
@@ -28,6 +28,18 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
+});
+
+router.get('/article/:id', async (req, res) => {
+
+});
+
+router.get('/login', async (req, res) => {
+
+});
+
+router.get('/signup', async (req, res) => {
+
 });
 
 module.exports = router;
