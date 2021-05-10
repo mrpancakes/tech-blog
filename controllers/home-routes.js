@@ -19,12 +19,11 @@ router.get('/', async (req, res) => {
 
         res.render('homepage', { 
             articles,
-            // loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn
         });
 
-        console.log(articles)
-        console.log(articles[0].comments[0])
-        // res.status(200).json(dbArticleData);
+        // console.log(articles)
+        // console.log(articles[0].comments[0])
 
     } catch (err) {
         console.log(err);
