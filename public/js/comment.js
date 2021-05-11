@@ -7,12 +7,12 @@ const postComment = async (event) => {
     if(comment.length > 0){
         const response = await fetch(`/api/articles/${postId}/comment`, {
             method: 'POST',
-            body: JSON.stringify({ comment} ),
+            body: JSON.stringify({comment} ),
             headers: {'Content-Type': 'application/json'}
         });
 
         if(response.ok){
-            document.replace(`/article/${postId}`);
+            document.location.replace(`/article/${postId}`);
         } else {
             alert(response.statusText);
         };
