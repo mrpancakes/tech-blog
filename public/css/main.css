@@ -23,6 +23,20 @@ form {
     width: 100% !important;
 }
 
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+#new-article {
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+
 @media screen and (max-width: 768px){
 
     form {

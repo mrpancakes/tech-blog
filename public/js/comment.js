@@ -21,6 +21,9 @@ const postComment = async (event) => {
     };
 };
 
+
+
 document
 .querySelector('.post-comment')
 .addEventListener('submit', postComment);
+
