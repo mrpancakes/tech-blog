@@ -4,19 +4,23 @@ body {
 }
 
 main {
-    width: 80%;
+    width: 60%;
     margin: auto;
-}
-
-.card {
-    width: 70%;
-    margin: auto;
-    margin-bottom: 20px;
 }
 
 form {
     width: 50%;
     margin: auto;
+}
+
+.card {
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.post-comment {
+    margin: 0 !important;
+    width: 100% !important;
 }
 
 @media screen and (max-width: 768px){

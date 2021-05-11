@@ -31,12 +31,16 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
                     </li>
+                    {{#unless loggedIn}}
                     <li class="nav-item ml-auto">
                         <a class="nav-link active" aria-current="page" href="/login">Login</a>
                     </li>
+                    {{/unless}}
+                    {{#if loggedIn}}
                     <li class="nav-item ml-auto">
                         <a class="nav-link active" aria-current="page" id="logout" href="#">Logout</a>
                     </li>
+                    {{/if}}
 
                 </ul>
             </div>

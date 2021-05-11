@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
         const articles = dbArticleData.map(article => article.get({ plain: true }));
 
-        res.render('homepage', { 
+        res.render('homepage', {
             articles,
             loggedIn: req.session.loggedIn
         });
@@ -31,13 +31,41 @@ router.get('/', async (req, res) => {
     }
 });
 
+// GET one article
+
 router.get('/article/:id', async (req, res) => {
     try {
+        const dbArticleData = await Article.findByPk(req.params.id,{
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                },
+                { 
+                    model: Comment,
+                    include: [
+                        {
+                            model: User,
+                            attributes: ['username']
+                        }
+                    ]
+                 }
+            ],
+        });
 
-        
-        
-    } catch (error) {
-        
+        const article = dbArticleData.get({ plain: true });
+
+        console.log(article);
+
+        res.render('article', {
+            article,
+            loggedIn: req.session.loggedIn
+        });
+
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
     }
 });
 
@@ -46,16 +74,16 @@ router.get('/login', (req, res) => {
         res.redirect('/');
         console.log(req.session.loggedIn);
         return;
-      }
-      // Otherwise, render the 'login' template
-      res.render('login');
+    }
+    // Otherwise, render the 'login' template
+    res.render('login');
 });
 
 router.get('/signup', async (req, res) => {
     try {
-        
+
     } catch (error) {
-        
+
     }
 });
 
