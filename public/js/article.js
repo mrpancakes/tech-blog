@@ -1,4 +1,6 @@
 const updateBtn = document.querySelector('#updateBtn');
+const deleteBtn = document.querySelector('#deleteBtn');
+const articleId = document.querySelector('#specific-article').value;
 
 const postComment = async (event) => {
     event.preventDefault();
@@ -30,7 +32,7 @@ const editArticle = async (event) => {
 
     const title = document.querySelector('#article-title').value.trim();
     const content = document.querySelector('#article-content').value.trim();
-    const articleId = document.querySelector('#specific-article').value;
+    
 
     console.log(title);
     console.log(content);
@@ -53,6 +55,22 @@ const editArticle = async (event) => {
         console.log(content);
         console.log(articleId);
     }
+};
+
+const deleteArticle = async (event) => {
+    event.preventDefault();
+
+    const response = await fetch(`/api/articles/${articleId}`, {
+        method: 'DELETE',
+        body: JSON.stringify({ articleId }),
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (response.ok) {
+        document.location.replace(`/`);
+    } else {
+        alert(response.statusText);
+    };
 
 }
 
@@ -62,5 +80,7 @@ document
     .querySelector('.post-comment')
     .addEventListener('submit', postComment);
 
-updateBtn.addEventListener('click', editArticle)
+updateBtn.addEventListener('click', editArticle);
+
+deleteBtn.addEventListener('click', deleteArticle);
 

@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
       },
     });
 
-    if (!artcleData) {
+    if (!articleData) {
       res.status(404).json({ message: 'No article found with this id!' });
       return;
     }
