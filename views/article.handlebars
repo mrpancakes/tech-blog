@@ -1,4 +1,4 @@
-<div class="card container">
+<div class="card container-fluid">
     <div class="d-flex justify-content-between card-header row ">
         <div class="col-12 col-lg-3">
             {{ format_date article.createdAt}}
@@ -19,16 +19,17 @@
             <textarea class="form-control" {{#unless owner}}readonly{{/unless}} aria-label="With textarea"
                 id="article-content">{{article.content}}</textarea>
         </div>
-    </form>
-</div>
-{{#if owner}}
-<div class="d-flex flex-column justify-content-start align-items-start">
-    <button class="btn btn-success mt-3 mb-5" type="submit" id="updateBtn">Update</button>
-    <button class="btn btn-danger delete-btn" id="deleteBtn">Delete Article</button>
-</div>
-{{/if}}
-</br>
 
+    </form>
+    {{#if owner}}
+    <div class="d-flex justify-content-start align-items-center">
+        <button class="btn btn-success m-2" type="submit" id="updateBtn">Update</button>
+        <button class="btn btn-danger delete-btn m-2" id="deleteBtn">Delete Article</button>
+    </div>
+    {{/if}}
+</div>
+
+</br>
 
 
 
