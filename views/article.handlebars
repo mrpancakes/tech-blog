@@ -16,7 +16,7 @@
         </div>
         <div class="input-group">
             <div class="input-group-prepend"></div>
-            <textarea class="form-control" {{#unless owner}}readonly{{/unless}} aria-label="With textarea"
+            <textarea rows="5" cols="26" class="form-control" {{#unless owner}}readonly{{/unless}} aria-label="With textarea"
                 id="article-content">{{article.content}}</textarea>
         </div>
 
@@ -24,7 +24,7 @@
     {{#if owner}}
     <div class="d-flex justify-content-start align-items-center">
         <button class="btn btn-success m-2" type="submit" id="updateBtn">Update</button>
-        <button class="btn btn-danger delete-btn m-2" id="deleteBtn">Delete Article</button>
+        <button class="btn btn-danger delete-btn m-2" id="deleteBtn">Delete</button>
     </div>
     {{/if}}
 </div>
