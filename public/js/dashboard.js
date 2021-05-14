@@ -1,13 +1,12 @@
 const newArticleBtn = document.querySelector('#new-article-btn');
 const newArticleDiv = document.querySelector('#new-article-div');
 const abortBtn = document.querySelector('#abort-btn');
+const deleteBtn = document.querySelector('#delete-btn');
  
 newArticleBtn.addEventListener('click', (event) => {
   event.preventDefault();
   
-  newArticleDiv.setAttribute('class', 'row mt-4 mb-4');
-
-  console.log('you clicked the button');
+  newArticleDiv.setAttribute('class', 'row mt-4 d-dlex flex-column justify-content-center align-items-center');
 
 });
 
@@ -15,8 +14,6 @@ abortBtn.addEventListener('click', (event) => {
   event.preventDefault();
   
   newArticleDiv.setAttribute('class', 'hidden');
-
-  console.log('you clicked the button');
 
 });
 
@@ -41,15 +38,10 @@ const newArticleHandler = async (event) => {
       } else {
         alert('Failed to create post');
       };
-
-      console.log(title);
-      console.log(body)
-
     }
   };
-
   
-
   document
   .querySelector('.new-article-form')
   .addEventListener('submit', newArticleHandler);
+

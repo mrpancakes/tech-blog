@@ -7,5 +7,12 @@ module.exports = {
 
       return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${ new Date(date).getFullYear()}`;
     },
+
+
+    // attempt to check if author = signed in user
+    isAuthor: (myId, authorId) => {
+      return myId === authorId;
+    }
+    
   };
   

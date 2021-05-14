@@ -22,9 +22,6 @@ router.get('/', async (req, res) => {
             loggedIn: req.session.loggedIn
         });
 
-        // console.log(articles)
-        // console.log(articles[0].comments[0])
-
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -35,13 +32,12 @@ router.get('/', async (req, res) => {
 
 router.get('/article/:id', async (req, res) => {
     try {
-        const dbArticleData = await Article.findByPk(req.params.id,{
+        const dbArticleData = await Article.findByPk(req.params.id, {
             include: [
                 {
-                    model: User,
-                    attributes: ['username']
+                    model: User
                 },
-                { 
+                {
                     model: Comment,
                     include: [
                         {
@@ -49,7 +45,7 @@ router.get('/article/:id', async (req, res) => {
                             attributes: ['username']
                         }
                     ]
-                 }
+                }
             ],
         });
 
@@ -57,9 +53,16 @@ router.get('/article/:id', async (req, res) => {
 
         console.log(article);
 
+        let owner = false;
+
+        if(req.session.user_id === article.user_id){
+            owner = true;
+        };
+
         res.render('article', {
             article,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            owner,
         });
 
 
@@ -79,20 +82,21 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.get('/signup', async (req, res) => {
-    try {
 
-    } catch (error) {
+// router.get('/signup', async (req, res) => {
+//     try {
 
-    }
-});
+//     } catch (error) {
+
+//     }
+// });
 
 
 // Populate Dashboard for the logged in User
 
 router.get('/dashboard', async (req, res) => {
     try {
-        
+
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [{ model: Article }],

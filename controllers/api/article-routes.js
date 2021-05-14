@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Article, Comment } = require('../../models');
+const auth = require('../../utils/auth');
 
 router.post('/', async (req, res) => {
   try {
@@ -30,6 +31,31 @@ router.post('/:id/comment', async (req, res) => {
     res.status(400).json(err)
   }
 })
+
+
+// Need a Put Route
+
+router.put('/:id', auth, async (req, res) => {
+  try {
+    const articleData = await Article.update({
+      title: req.body.title,
+      content: req.body.content,
+    },{
+      where: { id: req.params.id }
+    });
+
+    if(!articleData){
+      res.status(500).json(articleData);
+    }
+    
+    res.status(200).json(articleData);
+    
+  } catch (error) {
+    res.status(404).json(error);
+  }
+})
+
+
 
 router.delete('/:id', async (req, res) => {
   try {

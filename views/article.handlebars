@@ -1,17 +1,33 @@
-
-<div class="card">
-    <div class="d-flex justify-content-between card-header">
-        <div>
+<div class="card container">
+    <div class="d-flex justify-content-between card-header row ">
+        <div class="col-12 col-lg-3">
             {{ format_date article.createdAt}}
         </div>
-        <div> Posted by {{article.user.username}}</div>
+        <div class="col-12 col-lg-3"> Posted by {{article.user.username}}</div>
     </div>
-    <div class="card-body">
-        <h5 class="card-title">{{article.title}}</h5>
-        <p class="card-text">{{article.content}}</p>
-    </div>
+    <form class="card-body article-update-form">
+        <div class="form-group">
+            <input type="hidden" name="specific-article" id="specific-article" value="{{article.id}}" />
+            <label for="article-title" class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-10 article-form-title">
+                <input type="text" {{#unless owner}}readonly{{/unless}} class="form-control-plaintext" id="article-title" value="{{article.title}}">
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend"></div>
+            <textarea class="form-control" {{#unless owner}}readonly{{/unless}} aria-label="With textarea" id="article-content">{{article.content}}</textarea>
+        </div>
+    </form>
 </div>
+{{#if owner}}
+<button class="btn btn-success mt-3 mb-5" type="submit" id="updateBtn">Update</button>
+{{/if}}
 </br>
+
+
+
+
+{{!-- Make the card div be input fields with readonly. And have a {if} they're the author, the value is not readonly to --}}
 
 </br>
 
@@ -22,15 +38,15 @@
 {{#if loggedIn}}
 
 <form class="form post-comment d-flex flex-column justify-content-start">
-            <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea class="form-control" type="textarea" id="comment"></textarea>
-            </div>
-            <input type="hidden" name="post" id="post" value="{{article.id}}" />
-            <div class="form-group">
-                <button class="btn btn-primary mt-3 mb-5" type="submit" id="postComment">Post Comment</button>
-            </div>
-        </form>
+    <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" type="textarea" id="comment"></textarea>
+    </div>
+    <input type="hidden" name="post" id="post" value="{{article.id}}" />
+    <div class="form-group">
+        <button class="btn btn-primary mt-3 mb-5" type="submit" id="postComment">Post Comment</button>
+    </div>
+</form>
 {{/if}}
 <h5>Comments:</h5>
 {{#each article.comments as |comment|}}
@@ -42,4 +58,4 @@
 </div>
 {{/each}}
 
-<script src="../js/comment.js"></script>
+<script src="../js/article.js"></script>
