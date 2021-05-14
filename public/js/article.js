@@ -31,7 +31,7 @@ const editArticle = async (event) => {
 
 
     const title = document.querySelector('#article-title').value.trim();
-    const content = document.querySelector('#article-content').value.trim();
+    const content = document.querySelector('#article-content').textContent.trim();
     
 
     console.log(title);

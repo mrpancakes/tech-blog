@@ -14,11 +14,12 @@
                     id="article-title" value="{{article.title}}">
             </div>
         </div>
-        <div class="input-group">
-            <div class="input-group-prepend"></div>
-            <textarea rows="5" cols="26" class="form-control" {{#unless owner}}readonly{{/unless}} aria-label="With textarea"
-                id="article-content">{{article.content}}</textarea>
-        </div>
+        
+        {{#if owner}}
+        <div class="input-group" ><span class="textarea" id="article-content" role="textbox" value="{{article.content}}" contenteditable>{{article.content}}</span></div>
+        {{else}}
+        <p>{{article.content}}</p>
+        {{/if}}
 
     </form>
     {{#if owner}}
