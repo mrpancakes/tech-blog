@@ -27,7 +27,7 @@ I used the following npm packages to build this application:
 
 ## Live App
 
-This app is deployed through Heroku [here](). You can view a video walkthrough of the application [here](https://blooming-gorge-05033.herokuapp.com/).
+This app is deployed through Heroku [here](https://blooming-gorge-05033.herokuapp.com/).
 
 ![Application Preview](./images/app.gif)
 
